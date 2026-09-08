@@ -1,0 +1,6 @@
+{
+  "name": "Meena Mahal Auditorium",
+  "description": "The official website and booking dashboard for Meena Mahal Auditorium in Sankarankovil, Tamil Nadu. Explore our premium AC hall, dining services, and book your auspicious dates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

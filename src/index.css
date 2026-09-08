@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #fcf9f8;
+  --on-background: #1c1b1b;
+  --surface: #fcf9f8;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #4d4635;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6f3f2;
+  --surface-container: #f0eded;
+  --surface-container-high: #eae7e7;
+  --surface-container-highest: #e5e2e1;
+  --outline: #7f7663;
+  --outline-variant: #d0c5af;
+  
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --glass-card-bg: rgba(255, 255, 255, 0.55);
+  --glass-card-border: rgba(255, 255, 255, 0.4);
+}
+
+.dark {
+  --background: #09090b;
+  --on-background: #f4f4f5;
+  --surface: #09090b;
+  --on-surface: #f4f4f5;
+  --on-surface-variant: #a1a1aa;
+  --surface-container-lowest: #18181b;
+  --surface-container-low: #202024;
+  --surface-container: #27272a;
+  --surface-container-high: #3f3f46;
+  --surface-container-highest: #52525b;
+  --outline: #a1a1aa;
+  --outline-variant: #27272a;
+  
+  --glass-bg: rgba(9, 9, 11, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-card-bg: rgba(24, 24, 27, 0.7);
+  --glass-card-border: rgba(255, 255, 255, 0.1);
+}
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-primary: #735c00;
+  --color-primary-container: #d4af37;
+  --color-on-primary-container: #554300;
+  --color-primary-fixed: #ffe088;
+  --color-primary-fixed-dim: #e9c349;
+  --color-on-primary-fixed: #241a00;
+  --color-on-primary-fixed-variant: #574500;
+  
+  --color-secondary: #685d4a;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #eddec5;
+  --color-on-secondary-container: #6c614e;
+  --color-secondary-fixed: #f0e0c8;
+  --color-secondary-fixed-dim: #d3c5ad;
+  --color-on-secondary-fixed: #221b0b;
+  --color-on-secondary-fixed-variant: #4f4533;
+  
+  --color-tertiary: #5d5f5f;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #b2b3b3;
+  --color-on-tertiary-container: #434546;
+  
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+  
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface-dim: var(--surface-container-low);
+  --color-surface-bright: var(--surface);
+  
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-inverse-surface: #f3f0ef;
+  --color-inverse-on-surface: #313030;
+  
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+}
+
+@utility glass-panel {
+  backdrop-filter: blur(20px);
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+@utility glass-card {
+  backdrop-filter: blur(25px);
+  background-color: var(--glass-card-bg);
+  border: 1px solid var(--glass-card-border);
+}
+
+@utility bloom-shadow {
+  box-shadow: 0 10px 40px -15px rgba(212, 175, 55, 0.15);
+}
+
+.dark .bloom-shadow {
+  box-shadow: 0 10px 40px -15px rgba(212, 175, 55, 0.05);
+}
+
+@utility bloom-shadow-hover {
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+  &:hover {
+    box-shadow: 0 20px 50px -10px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+  }
+}
+
+.dark .bloom-shadow-hover:hover {
+  box-shadow: 0 20px 50px -10px rgba(212, 175, 55, 0.12);
+}
+
+@utility font-label-caps {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+/* Global focus styling for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary-container);
+  outline-offset: 2px;
+}
+
+/* smooth scrolls */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar to match luxury theme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-container-low);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Infinite Scrolling Marquee */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
